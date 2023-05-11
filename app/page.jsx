@@ -30,7 +30,9 @@ export default function Home() {
     }
   };
 
-  console.log(data);
+  if (data) {
+    console.log(data);
+  }
 
   return (
     <>
@@ -51,6 +53,22 @@ export default function Home() {
             </button>
           </form>
         </div>
+        {data && (
+          <div className="glass px-24 py-16 mt-8">
+            <div className="text-center text-black font-bold text-2xl">
+              Overall: {data.Overall}
+            </div>
+            <div className="grid grid-cols-2 gap-x-2 gap-y-1">
+              <div className="">Stars: {data.Star}</div>
+              <div className="">Forks: {data.Fork}</div>
+              <div className="">Commits: {data.Commits}</div>
+              <div className="">Issue: {data.Issue}</div>
+              <div className="">Update: {data.Update}</div>
+              <div className="">Watcher: {data.Watcher}</div>
+              <div className="">Pull Requests: {data.Prs}</div>
+            </div>
+          </div>
+        )}
       </main>
     </>
   );
