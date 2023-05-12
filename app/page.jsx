@@ -92,13 +92,13 @@ export default function Home() {
                 Overall: {data.Overall}
               </div>
               <div className="grid grid-cols-2 gap-x-1 sm:gap-x-2 gap-y-1 text-neutral-300 sm:text-lg">
-                <div className="">Stars: {data.Star}</div>
-                <div className="">Forks: {data.Fork}</div>
-                <div className="">Commits: {data.Commits}</div>
-                <div className="">Issue: {data.Issue}</div>
-                <div className="">Update: {data.Update}</div>
-                <div className="">Watcher: {data.Watcher}</div>
-                <div className="">Pull Requests: {data.Prs}</div>
+                <div>Stars: {data.Star}</div>
+                <div>Forks: {data.Fork}</div>
+                <div>Commits: {data.Commits}</div>
+                <div>Issue: {data.Issue}</div>
+                <div>Update: {data.Update}</div>
+                <div>Watcher: {data.Watcher}</div>
+                <div>Pull Requests: {data.Prs}</div>
               </div>
             </div>
           )}
