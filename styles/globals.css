@@ -78,11 +78,21 @@ body {
   animation: spin-anim 1.2s linear infinite;
 }
 
+.nav-link:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
 @keyframes spin-anim {
   0% {
     transform: rotate(0deg);
   }
   100% {
     transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 640px) {
+  .input {
+    width: 75vw;
   }
 }

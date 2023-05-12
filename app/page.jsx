@@ -15,26 +15,33 @@ export default function Home() {
     setLoading(true);
     let ret;
     e.preventDefault();
+    const regex1 = /^https:\/\/github\.com\/[a-zA-Z0-9-_]+\/[a-zA-Z0-9-_]+$/;
     let url = document.querySelector("#url").value;
-    const regex = /https:\/\/github\.com\/(.+)\/(.+)/;
-    const match = url.match(regex);
-    setRepoOwner(match[1]);
-    setRepoName(match[2]);
-    setLink(url);
-    if (match) {
-      const user = match[1];
-      const repo = match[2];
-      const newItem = {
-        owner: user,
-        name: repo,
-      };
-      axios
-        .post("https://github-grade.herokuapp.com/api", newItem)
-        .then((r) => {
-          ret = r.data;
-          setData(ret);
-        });
+    if (regex1.test(url)) {
+      const regex = /https:\/\/github\.com\/(.+)\/(.+)/;
+      const match = url.match(regex);
+      setRepoOwner(match[1]);
+      setRepoName(match[2]);
+      setLink(url);
+      if (match) {
+        const user = match[1];
+        const repo = match[2];
+        const newItem = {
+          owner: user,
+          name: repo,
+        };
+        axios
+          .post("https://github-grade.herokuapp.com/api", newItem)
+          .then((r) => {
+            ret = r.data;
+            setData(ret);
+          });
+      } else {
+        alert("Please input a valid Github URL");
+        setLoading(false);
+      }
     } else {
+      setLoading(false);
       alert("Please input a valid Github URL");
     }
   };
@@ -57,7 +64,7 @@ export default function Home() {
           </div>
         )}
         <>
-          <div className="glass px-24 py-16 pb-8">
+          <div className="glass px-[8vw] py-16 pb-8 sm:px-24">
             <form
               className="flex flex-col items-center gap-9"
               onSubmit={(e) => gradeRepo(e)}
@@ -73,18 +80,18 @@ export default function Home() {
             </form>
           </div>
           {data && (
-            <div className="glass px-24 py-9 mt-8">
+            <div className="glass px-[8vw] sm:px-24 py-9 mt-8">
               <Link
                 href={link}
                 target="_blank"
-                className="flex items-center justify-center text-neutral-300 font-bold text-xl mb-3"
+                className="flex items-center justify-center text-neutral-300 hover:text-white transition-all font-bold text-xl mb-3"
               >
                 {repoOwner}/{repoName}
               </Link>
               <div className="text-center text-white font-bold text-2xl mb-4">
                 Overall: {data.Overall}
               </div>
-              <div className="grid grid-cols-2 gap-x-2 gap-y-1 text-neutral-300 text-lg">
+              <div className="grid grid-cols-2 gap-x-1 sm:gap-x-2 gap-y-1 text-neutral-300 sm:text-lg">
                 <div className="">Stars: {data.Star}</div>
                 <div className="">Forks: {data.Fork}</div>
                 <div className="">Commits: {data.Commits}</div>
