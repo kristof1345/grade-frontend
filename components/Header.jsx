@@ -17,13 +17,6 @@ const Header = () => {
       >
         Github
       </Link>
-      <Link
-        className="nav-link text-neutral-200 transition-all px-3 py-1 rounded"
-        href="https://github.com/kristof1345/github_grade"
-        target="_blank"
-      >
-        API
-      </Link>
     </header>
   );
 };

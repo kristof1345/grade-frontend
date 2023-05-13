@@ -31,7 +31,7 @@ export default function Home() {
           name: repo,
         };
         axios
-          .post("https://github-grade.herokuapp.com/api", newItem)
+          .post("https://githubgrade-production.up.railway.app/api", newItem)
           .then((r) => {
             ret = r.data;
             setData(ret);
@@ -49,10 +49,6 @@ export default function Home() {
   useEffect(() => {
     setLoading(false);
   }, [data]);
-
-  if (data) {
-    console.log(data);
-  }
 
   return (
     <>
